@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Error on juhyeong 정리 블로그</title>
+        <link>http://localhost:1313/tags/error/</link>
+        <description>Recent content in Error on juhyeong 정리 블로그</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 27 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/error/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>git pull 에러 - error: Your local changes to the following files would be overwritten by merge</title>
+        <link>http://localhost:1313/p/git-pull-%EC%97%90%EB%9F%AC-error-your-local-changes-to-the-following-files-would-be-overwritten-by-merge/</link>
+        <pubDate>Tue, 27 Aug 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/git-pull-%EC%97%90%EB%9F%AC-error-your-local-changes-to-the-following-files-would-be-overwritten-by-merge/</guid>
+        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git stash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git pull origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;git stash로 변경사항 임시저장하고 pull하면 됨&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>git push 에러 - error: src refspec master does not match any. error: failed to push some refs to &#39;ssh://xxxxx.com/project.git&#39;</title>
+        <link>http://localhost:1313/p/git-push-%EC%97%90%EB%9F%AC-error-src-refspec-master-does-not-match-any.-error-failed-to-push-some-refs-to-ssh/xxxxx.com/project.git/</link>
+        <pubDate>Tue, 27 Aug 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/git-push-%EC%97%90%EB%9F%AC-error-src-refspec-master-does-not-match-any.-error-failed-to-push-some-refs-to-ssh/xxxxx.com/project.git/</guid>
+        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push origin HEAD:main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;하면 됨&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
