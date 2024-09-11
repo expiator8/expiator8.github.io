@@ -1,33 +1,65 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on juhyeong 정리 블로그</title>
-        <link>http://localhost:1313/tags/</link>
-        <description>Recent content in Tags on juhyeong 정리 블로그</description>
+        <title>Tags on juhyeong&#39;s blog</title>
+        <link>https://expiator8.github.io/tags/</link>
+        <description>Recent content in Tags on juhyeong&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 27 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Distributed Version Control System</title>
-        <link>http://localhost:1313/tags/distributed-version-control-system/</link>
-        <pubDate>Tue, 27 Aug 2024 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 11 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://expiator8.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Celery</title>
+        <link>https://expiator8.github.io/tags/celery/</link>
+        <pubDate>Wed, 11 Sep 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/distributed-version-control-system/</guid>
+        <guid>https://expiator8.github.io/tags/celery/</guid>
         <description></description>
         </item>
         <item>
-        <title>Error</title>
-        <link>http://localhost:1313/tags/error/</link>
-        <pubDate>Tue, 27 Aug 2024 00:00:00 +0000</pubDate>
+        <title>FastAPI</title>
+        <link>https://expiator8.github.io/tags/fastapi/</link>
+        <pubDate>Wed, 11 Sep 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/error/</guid>
+        <guid>https://expiator8.github.io/tags/fastapi/</guid>
         <description></description>
         </item>
         <item>
-        <title>Git</title>
-        <link>http://localhost:1313/tags/git/</link>
+        <title>Gunicorn</title>
+        <link>https://expiator8.github.io/tags/gunicorn/</link>
+        <pubDate>Wed, 11 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://expiator8.github.io/tags/gunicorn/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Thread</title>
+        <link>https://expiator8.github.io/tags/thread/</link>
+        <pubDate>Wed, 11 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://expiator8.github.io/tags/thread/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Uvicorn</title>
+        <link>https://expiator8.github.io/tags/uvicorn/</link>
+        <pubDate>Wed, 11 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://expiator8.github.io/tags/uvicorn/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cutlet</title>
+        <link>https://expiator8.github.io/tags/cutlet/</link>
         <pubDate>Tue, 27 Aug 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/tags/git/</guid>
+        <guid>https://expiator8.github.io/tags/cutlet/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Food</title>
+        <link>https://expiator8.github.io/tags/food/</link>
+        <pubDate>Tue, 27 Aug 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://expiator8.github.io/tags/food/</guid>
         <description></description>
         </item>
         
