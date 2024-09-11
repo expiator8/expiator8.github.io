@@ -7,14 +7,14 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 11 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://expiator8.github.io/tags/uvicorn/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Celery와 Thread를 활용한 비동기&amp;병렬 작업(feat. FastAPI)</title>
-        <link>https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/</link>
+        <title>Celery와 Thread를 활용한 비동기 작업(feat. FastAPI)</title>
+        <link>https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/</link>
         <pubDate>Wed, 11 Sep 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/</guid>
+        <guid>https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/</guid>
         <description>&lt;h2 id=&#34;목표-시나리오&#34;&gt;목표 시나리오
 &lt;/h2&gt;&lt;p&gt;FastAPI로 진행&lt;br&gt;
-이미지를 7장을 생성하고 생성 결과를 s3에 업로드하는 api를 작성&lt;br&gt;
+이미지를 7장을 생성하고 생성 결과를 s3에 업로드하는 api를 작성.&lt;br&gt;
 이미지를 생성하기 위해서는 외부 이미지 서버에 요청을 해야함.&lt;br&gt;
 이미지 서버에 이미지 생성 최대 병렬 요청 가능한 클라이언트 수는 5,&lt;br&gt;
 s3에 업로드 최대 병렬 요청 가능한 수는 25로 설정.&lt;br&gt;
@@ -152,10 +152,10 @@ python &lt;code&gt;concurrent.futures&lt;/code&gt; 내장 모듈에서 제공하
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/1.gif&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/1.gif&#34;
 	width=&#34;676&#34;
 	height=&#34;154&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/1_hu7812253206551581086.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/1_hu5653878733300302064.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/1_hu7812253206551581086.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/1_hu5653878733300302064.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;response를 받기까지 시간이 걸린다.&#34;
@@ -297,10 +297,10 @@ fastapi에서 사용하는 &lt;b&gt;uvicorn web server&lt;/b&gt;는 기본적으
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/details&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/3.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/3.gif&#34;
 	width=&#34;740&#34;
 	height=&#34;440&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/3_hu9069631598548323746.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/3_hu11168579880850900699.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/3_hu9069631598548323746.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/3_hu11168579880850900699.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;uvicorn web server 동작&#34;
@@ -312,10 +312,10 @@ fastapi에서 사용하는 &lt;b&gt;uvicorn web server&lt;/b&gt;는 기본적으
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;반면 예를들어 gunicorn에서 동일한 simple, slow api에 각각 5개의 병렬 요청을 보내면 gunicorn에서는 다음과 같이 동작한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/4.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/4.gif&#34;
 	width=&#34;438&#34;
 	height=&#34;434&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/4_hu5241307868375348136.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/4_hu2240703065634290031.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/4_hu5241307868375348136.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/4_hu2240703065634290031.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;gunicorn web server 동작&#34;
@@ -375,10 +375,10 @@ fastapi에서 사용하는 &lt;b&gt;uvicorn web server&lt;/b&gt;는 기본적으
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;예를들어 이 경우에는 slow api가 5개의 thread를 전부 사용한다면 그다음 api 호출부터 지연된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/5.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/5.gif&#34;
 	width=&#34;368&#34;
 	height=&#34;434&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/5_hu16583972761217279910.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/5_hu6896516991579569091.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/5_hu16583972761217279910.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/5_hu6896516991579569091.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;gunicorn threads 5 설정 후 동작&#34;
@@ -389,12 +389,17 @@ fastapi에서 사용하는 &lt;b&gt;uvicorn web server&lt;/b&gt;는 기본적으
 		data-flex-basis=&#34;203px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yscho03.tistory.com/328&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;uvicorn이 gunicorn의 worker 프로세스로서 동작하게 할수도 있는데 Kubernetes나 Docker Swarm로 프로세스 관리자 역할을 한다면
-uvicorn 단일 프로세스로만 사용하면 좋다고 하는 것 같다.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://fastapi.xiniushu.com/sv/deployment/server-workers/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;예전에 공홈에서도 비슷한 의견의 관련글을 분명 봤었던것 같은데..다시 찾아보려고 하니까 공홈은 아니고 뭔가..이상한? 미러링? 사이트에서 글을 찾았다&lt;/a&gt;&lt;br&gt;
-예전에도 여기서 본건가? 무슨 사이트지? 공홈이랑 완전 똑같이 생겼다.&lt;/p&gt;
+&lt;p&gt;uvicorn이 gunicorn의 worker 프로세스로서 동작하게 할수도 있는데 Kubernetes나 Docker Swarm 등으로 프로세스 관리자 역할을 한다면
+uvicorn 단일 프로세스로만 사용하면 좋은 것 같다.&lt;/p&gt;
+&lt;p&gt;참고글&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yscho03.tistory.com/328&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;yscho03님 블로그&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://fastapi.xiniushu.com/sv/deployment/server-workers/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://fastapi.xiniushu.com/sv/deployment/server-workers/&lt;/a&gt;&lt;br&gt;
+이 글은 예전에 공홈에서 분명 봤었던것 같은데..다시 찾아보려고 하다가 공홈은 아니고 뭔가..이상한? 미러링? 사이트에서 글을 찾았다.&lt;br&gt;
+예전에도 여기서 본건가? 무슨 사이트지? 공홈이랑 완전 똑같이 생겼다.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -404,10 +409,10 @@ uvicorn 단일 프로세스로만 사용하면 좋다고 하는 것 같다.&lt;/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;이런식으로 하면 fastapi에서 gunicorn을 사용하면서도 비동기로 처리된다.  상황에 맞게 잘 사용하면 될것같다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/6.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/6.gif&#34;
 	width=&#34;412&#34;
 	height=&#34;294&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/6_hu8022182718187879318.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/6_hu13484921134783947394.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/6_hu8022182718187879318.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/6_hu13484921134783947394.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;gunicorn with uvicorn 동작&#34;
@@ -418,11 +423,11 @@ uvicorn 단일 프로세스로만 사용하면 좋다고 하는 것 같다.&lt;/
 		data-flex-basis=&#34;336px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;그런데 &lt;code&gt;uvicorn.workers.UvicornWorker&lt;/code&gt;를 사용할때 &amp;ndash;threads 옵션을 설정하면 요청을 받았을때 threads 개수만큼 먼저 비동기로 시작하고 다음 작업을 처리할까 싶었는데 기대한대로 동작하진 않았다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/7.gif&#34;
+&lt;p&gt;그런데 &lt;code&gt;uvicorn.workers.UvicornWorker&lt;/code&gt;를 사용할때 &lt;code&gt;--threads&lt;/code&gt; 옵션을 설정하면 요청을 받았을때 threads 개수만큼 먼저 비동기로 시작하고 다음 작업을 처리할까 싶었는데 기대한대로 동작하진 않았다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/7.gif&#34;
 	width=&#34;392&#34;
 	height=&#34;214&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/7_hu5088668491230848555.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/7_hu10253669413922036745.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/7_hu5088668491230848555.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/7_hu10253669413922036745.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;gunicorn with uvicorn &amp;ndash;threads 5 동작&#34;
@@ -514,10 +519,10 @@ uvicorn 단일 프로세스로만 사용하면 좋다고 하는 것 같다.&lt;/
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;slow task response&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/2.gif&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/2.gif&#34;
 	width=&#34;676&#34;
 	height=&#34;154&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/2_hu14005648542780818522.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/2_hu9731913597738143409.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/2_hu14005648542780818522.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/2_hu9731913597738143409.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;response를 바로 받는다.&#34;
@@ -680,10 +685,10 @@ uvicorn 단일 프로세스로만 사용하면 좋다고 하는 것 같다.&lt;/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;우선 slow api로 7번의 요청을 보냈을때 모든 요청이 빠르게 response 되고 simple, slow api 모두 각각 7번의 요청을 보냈을때도 response가 지연되지 않는다&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/8.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/8.gif&#34;
 	width=&#34;684&#34;
 	height=&#34;214&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/8_hu2040322037373307968.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/8_hu9622490391320203890.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/8_hu2040322037373307968.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/8_hu9622490391320203890.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;slow api 7번 요청&#34;
@@ -694,10 +699,10 @@ uvicorn 단일 프로세스로만 사용하면 좋다고 하는 것 같다.&lt;/
 		data-flex-basis=&#34;767px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/9.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/9.gif&#34;
 	width=&#34;694&#34;
 	height=&#34;408&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/9_hu6830494501249556606.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/9_hu2247819054659852768.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/9_hu6830494501249556606.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/9_hu2247819054659852768.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;simple, slow api 각각 7번 요청&#34;
@@ -888,28 +893,18 @@ image upload도 5개의 task를 처리하는 동안 최대 25개의 업로드가
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;celery -A main.celery_app worker -l INFO -f logs/celery.log --pool threads
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-P, --pool &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;pool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Pool implementation.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;prefork | eventlet | gevent | solo | processes | threads | custom
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;사실 처음에 ThreadPoolExecutor가 동작하지 않았는데 celery worker 옵션에 threads가 있는걸 보고 적용했더니 된다! &lt;a class=&#34;link&#34; href=&#34;https://docs.celeryq.dev/en/stable/reference/cli.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;-P, &amp;ndash;pool &lt;pool&gt;&lt;br&gt;
+Pool implementation.&lt;/p&gt;
+&lt;p&gt;Options:&lt;br&gt;
+prefork | eventlet | gevent | solo | processes | threads | custom&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;사실 처음에 ThreadPoolExecutor가 동작하지 않았는데 celery worker 옵션에 &amp;ndash;pool threads가 있는걸 보고 적용했더니 된다! &lt;a class=&#34;link&#34; href=&#34;https://docs.celeryq.dev/en/stable/reference/cli.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;celery worker 옵션 참고&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/10.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/10.gif&#34;
 	width=&#34;360&#34;
 	height=&#34;203&#34;
-	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/10_hu9976895634691896576.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EB%B3%91%EB%A0%AC-%EC%9E%91%EC%97%85feat.-fastapi/10_hu17655089244047521039.gif 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/10_hu9976895634691896576.gif 480w, https://expiator8.github.io/p/celery%EC%99%80-thread%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85feat.-fastapi/10_hu17655089244047521039.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
