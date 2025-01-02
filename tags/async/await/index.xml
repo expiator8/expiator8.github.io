@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Async/Await on Markdown 파일 정리하기</title>
+        <link>https://expiator8.github.io/tags/async/await/</link>
+        <description>Recent content in Async/Await on Markdown 파일 정리하기</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 13 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://expiator8.github.io/tags/async/await/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>동기와 비동기</title>
+        <link>https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/</link>
+        <pubDate>Wed, 13 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/</guid>
+        <description>&lt;h2 id=&#34;목표&#34;&gt;목표
+&lt;/h2&gt;&lt;p&gt;먼저 Process와 Thread를 간단하게 정리하고
+동기/비동기 개념 및 용어를 정리하고
+간단한 코드로 테스트&lt;/p&gt;
+&lt;h2 id=&#34;프로세스&#34;&gt;프로세스
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;메모리를 할당받아 실행되고 있는 프로그램&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;프로세스-구성요소&#34;&gt;프로세스 구성요소
+&lt;/h3&gt;&lt;h4 id=&#34;pcbprocess-control-block&#34;&gt;PCB(Process Control Block)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;운영체제가 프로세스를 제어하기 위한 정보를 저장해 놓는 구조체
+&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/5.png&#34;
+	width=&#34;2042&#34;
+	height=&#34;618&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/5_hu9000627327298137324.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/5_hu16137251760846346810.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;330&#34;
+		data-flex-basis=&#34;793px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;pidprocess-identification-number&#34;&gt;PID(Process Identification Number)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;프로세스 고유 번호&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;pcprogram-counter&#34;&gt;PC(Program Counter)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;프로세스를 실행하기 위해 다음으로 실행할 기계어가 저장된 메모리 주소를 가리키는 값&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;메모리&#34;&gt;메모리
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#process-memory&#34; &gt;참조&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;process-memory&#34;&gt;프로세스 메모리 구조
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/6.png&#34;
+	width=&#34;604&#34;
+	height=&#34;726&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/6_hu1693407107223695177.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/6_hu17351516263476755754.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;83&#34;
+		data-flex-basis=&#34;199px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;textcode-영역&#34;&gt;Text(Code) 영역
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;실행할 프로그램의 코드가 CPU 에서 수행할 수 있는 기계어 명령 형태로 변환되어 저장되는 공간&lt;br&gt;
+CPU는 이 영역에서 명령어를 하나씩 가져와 처리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;data-영역&#34;&gt;Data 영역
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;전역 변수(global variable) 또는 static 변수 등 초기화 된 전역변수를 저장하는 공간&lt;/li&gt;
+&lt;li&gt;프로그램이 시작될 때 할당되어 프로그램 종료 시 소멸&lt;/li&gt;
+&lt;li&gt;ROM(Read Only Memory) 섹션&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;bssblock-stated-symbol-영역&#34;&gt;BSS(Block Stated Symbol) 영역
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;초기화 되지 않은 전역변수를 저장&lt;/li&gt;
+&lt;li&gt;초기화 된 전역변수는 Data 영역에 저장되어 비휘발성 메모리인 ROM에 저장되는데 이 부분은 비용이 많이 들어 RAM에 저장될 것과 ROM에 저장될 것을 구분하기 위해 영역을 구분해 사용한다.&lt;/li&gt;
+&lt;li&gt;RAM(Random Access Memory) 섹션&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;heap-영역&#34;&gt;Heap 영역
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;필요에 의해 메모리를 동적 할당하고자 할 때 사용하는 메모리 영역(동적 데이터 영역)&lt;/li&gt;
+&lt;li&gt;메모리 주소 값에 의해서만 참조되고 사용되는 영역&lt;/li&gt;
+&lt;li&gt;java를 예로 들면 객체가 heap 영역에 생성되고 GC(Garbage Collection) 에 의해서 정리되는 영역&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;stack-영역&#34;&gt;Stack 영역
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;호출된 함수의 수행을 마치고 복귀할 주소 및 데이터(지역변수, 매개변수, 리턴값 등) 등 잠시 사용되었다가 사라지는 데이터를 저장하는 영역(임시 메모리 영역)&lt;/li&gt;
+&lt;li&gt;함수 호출 시 할당되고 함수 종료 시 반환&lt;/li&gt;
+&lt;li&gt;프로세스가 메모리에 로드될 때 Stack 사이즈가 고정되어 있어 런타임 시 Stack 사이즈를 바꿀 수 없음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;일반적으로 작성하는 코드로 만들어진 어플리케이션은 컴파일 할 때 code, data, stack 영역의 크기를 계산해 메모리 영역을 결정&lt;/p&gt;
+&lt;h4 id=&#34;커널-주소-공간&#34;&gt;커널 주소 공간
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;메모리 구조는 크게 커널 주소 공간(kernel space), 사용자 주소 공간 으로 분리 할 수 있음&lt;/li&gt;
+&lt;li&gt;커널 부분은 사용자가 접근 할 수 없음&lt;/li&gt;
+&lt;li&gt;stack 아래에 있다고 보면 됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/7.png&#34;
+	width=&#34;200&#34;
+	height=&#34;378&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/7_hu14807937364610826527.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/7_hu4207573161664914281.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;52&#34;
+		data-flex-basis=&#34;126px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Code, Data, BSS 영역은 컴파일 시 크기가 결정되고 Heap, Stack 영역은 런타임 시 크기가 결정&lt;/li&gt;
+&lt;li&gt;Stack의 지역변수는 사용하고 소멸하므로 데이터 용량이 불확실. 그렇기 때문에 밑에서부터 채워올리고 Heap은 위에서부터 채워나감. 이렇게 서로 주소값을 채워나가다가 Heap에서 Stack 방향으로 영역을 침범하는 경우 HEAP overflow, 반대로 Stack에서 Heap 방향으로 영역을 침범한다면 STACK overflow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;쓰레드&#34;&gt;쓰레드
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;프로세스 내에서 실제로 작업을 수행하는 주체&lt;/li&gt;
+&lt;li&gt;프로세스 내에 메모리를 공유하면서 프로세스의 여러 특정 부분을 동시에 수행할 수 있음&lt;/li&gt;
+&lt;li&gt;모든 프로세스는 한 개 이상의 쓰레드가 존재하여 작업을 수행&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;멀티-쓰레드-프로세스&#34;&gt;멀티 쓰레드 프로세스
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;두 개 이상의 쓰레드를 가지는 프로세스&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;쓰레드-구성요소&#34;&gt;쓰레드 구성요소
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;쓰레드는 기본적으로 프로세스에 귀속.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/8.png&#34;
+	width=&#34;1024&#34;
+	height=&#34;768&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/8_hu14854851311664721582.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/8_hu15219978911694068738.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;tcb&#34;&gt;TCB
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Thread Identifier: 쓰레드를 구분하는 유일한 식별자&lt;/li&gt;
+&lt;li&gt;Stack pointer: 쓰테드 별로 고유한 Stack의 pointer&lt;/li&gt;
+&lt;li&gt;Program counter: 다음에 실행될 명령어의 주소&lt;/li&gt;
+&lt;li&gt;쓰레드의 상태 (running, ready, waiting, start, done)&lt;/li&gt;
+&lt;li&gt;쓰레드가 소속된 processor의 PCB주소&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;싱글-쓰레드와-멀티-쓰레드&#34;&gt;싱글 쓰레드와 멀티 쓰레드
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/9.png&#34;
+	width=&#34;770&#34;
+	height=&#34;452&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/9_hu13241313866002326415.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/9_hu16599056112260179184.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;170&#34;
+		data-flex-basis=&#34;408px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;멀티 쓰레드는 데이터와 파일들을 공유하고 각각 registers와 stack 메모리 공간을 할당받음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;동시성concurrency과-병렬성parallelism&#34;&gt;동시성(Concurrency)과 병렬성(Parallelism)
+&lt;/h2&gt;&lt;h3 id=&#34;동시성-concurrency&#34;&gt;동시성, Concurrency
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;동시에 실행되는 것 처럼 Time-sharing 알고리즘(시분할 등)을 이용하여 작업을 수행하는 것&lt;/li&gt;
+&lt;li&gt;하나의 CPU 코어에서 여러 쓰레드를 처리하는 것이며 기본적으로 context swithcing 을 통해 자원을 공유&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/10.png&#34;
+	width=&#34;1024&#34;
+	height=&#34;593&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/10_hu9704059104545640912.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/10_hu6942664221732475466.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;414px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;한 작업이 &amp;ldquo;대기 상태&amp;rdquo; 일 때 다른 작업을 수행할 수 있어서 자원을 효율적으로 사용하고 I/O bound (Disk IO, Network IO)에서 특히 유용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;병렬성-parallelism&#34;&gt;병렬성, Parallelism
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;동일한 시간에 독립적인 작업을 수행하는 것&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/11.png&#34;
+	width=&#34;1021&#34;
+	height=&#34;348&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/11_hu6842065746114453014.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/11_hu4096452880450742200.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;293&#34;
+		data-flex-basis=&#34;704px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;즉, 동시성은 하나의 코어에서 여러 쓰레드를 다중 처리하지만 병렬성은 진짜 각 코어가 동시에 독립적으로 수행&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;블로킹blocking논블로킹non-blocking&#34;&gt;블로킹(Blocking)/논블로킹(Non-blocking)
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;제어할 수 없는 대상의 처리 방법&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;블로킹blocking&#34;&gt;블로킹(Blocking)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;다른 작업의 실행이 현재 작업의 실행을 막는다&lt;/li&gt;
+&lt;li&gt;호출한 함수가 멈춰 있는다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def A&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; something&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def B&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; something&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def B&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; something&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def 호출자&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    A&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    B&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    C&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;함수 A, B, C가 있다고 가정&lt;/li&gt;
+&lt;li&gt;호출자가 다른 함수 A를 호출했을 때&lt;/li&gt;
+&lt;li&gt;호출자는 A의 실행이 끝날 때까지 멈추고&lt;/li&gt;
+&lt;li&gt;A의 실행이 끝나고 나서야 B가 실행된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;호출자가 제어할 수 없는 대상인 A가 제어권을 가지고 있기 때문에
+호출자의 행동이 블로킹 된다.
+A가 완료될때 제어권을 호출자로 반환.&lt;/p&gt;
+&lt;h3 id=&#34;논블로킹non-blocking&#34;&gt;논블로킹(Non-blocking)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;다른 작업의 실행이 현재 작업의 실행을 막지 않는다&lt;/li&gt;
+&lt;li&gt;호출한 함수가 멈춰 있지 않는다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def A&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; something&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def B&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; something&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def B&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; something&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def 호출자&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    A&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    B&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    C&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;함수 A, B, C가 있다고 가정&lt;/li&gt;
+&lt;li&gt;호출자가 다른 함수 A를 호출했을 때&lt;/li&gt;
+&lt;li&gt;호출자와 A 모두 실행 상태&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;호출자가 제어할 수 없는 대상인 A가 별도의 제어권을 얻어 실행되어
+호출자의 행동이 블로킹 되지 않아 함수 A가 실행중인 상태로 끝나지도 않았는데
+B를 호출, 마찬가지로 C도 호출할 수 있음&lt;/p&gt;
+&lt;h2 id=&#34;동기synchronous비동기asynchronous&#34;&gt;동기(synchronous)/비동기(asynchronous)
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;작업(들)이 같이 시작해, 같이 끝나는가?&lt;/li&gt;
+&lt;li&gt;제어권의 반환과 결과값의 전달이 같이 이루어지는가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;동기&#34;&gt;동기
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/12.png&#34;
+	width=&#34;2080&#34;
+	height=&#34;596&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/12_hu15451014369684377421.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/12_hu6031903467145047116.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;348&#34;
+		data-flex-basis=&#34;837px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;작업들이 같이 시작해 같이 끝남&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/13.png&#34;
+	width=&#34;2104&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/13_hu1109871924350163215.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/13_hu7759981835352783680.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;349&#34;
+		data-flex-basis=&#34;838px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;도중에 B가 끼어든다면? 같이 시작한 것이 아님&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;작업 중에 다른 작업이 끼어들지 못하게 하기 위해 사용&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;비동기&#34;&gt;비동기
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/14.png&#34;
+	width=&#34;2002&#34;
+	height=&#34;640&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/14_hu7009562975075916052.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/14_hu16246588141655476720.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;312&#34;
+		data-flex-basis=&#34;750px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;작업들의 시작과 끝이 다름&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;작업 중에 끼어들어도 괜찮음&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;시작, 종료 시기를 신경쓰지 않기 위해 사용&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;동기블로킹-비동기논블로킹&#34;&gt;동기==블로킹?, 비동기==논블로킹?
+&lt;/h3&gt;&lt;p&gt;Block                              Synchronous&lt;br&gt;
+                           ==&lt;br&gt;
+Non-Block               Asynchronous&lt;/p&gt;
+&lt;p&gt;블로킹은 제어권을 호출된 함수가 들고 있다가 결과값을 반환할 때 돌려주는 것이고,
+동기는 제어권을 반환하는 시간과 결과값을 반환하는 시간이 일치하는 것인데
+그러면 블로킹과 동기가 같은게 아닌가?
+마찬가지로 논블로킹과 비동기가 같은게 아닌가?&lt;/p&gt;
+&lt;p&gt;관점이 다르다.&lt;br&gt;
+블로킹/논블로킹: &lt;strong&gt;제어권&lt;/strong&gt;에 대한 관점&lt;br&gt;
+동기/비동기: &lt;strong&gt;시간&lt;/strong&gt;에 대한 관점. 즉, 제어권을 반환하는 시점, 타이밍의 관점&lt;/p&gt;
+&lt;h4 id=&#34;linuxio-models&#34;&gt;LinuxI/O models
+&lt;/h4&gt;&lt;p&gt;-Application이 호출자, Kernel을 함수 A,B,C로 보면 됨&lt;/p&gt;
+&lt;p&gt;동기/블로킹 I/O Model&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/15.png&#34;
+	width=&#34;538&#34;
+	height=&#34;340&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/15_hu1446393679191986849.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/15_hu8593389056055146163.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;동기/논블로킹 I/O Model&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/16.png&#34;
+	width=&#34;474&#34;
+	height=&#34;340&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/16_hu15729358397920729899.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/16_hu5511314457030688322.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;결과값은 함수가 완료된 상태뿐 아니라 완료되지 않은 상태도 결과값이다
+제어권과 함께 함수가 아직 &lt;strong&gt;완료되지 않았다는 결과값&lt;/strong&gt;을 전달했기 때문에 동기다&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;from concurrent.futures import ThreadPoolExecutor
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import threading
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def long_running_task&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    time.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;3&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; f&lt;span class=&#34;s2&#34;&gt;&amp;#34;Task {n} is completed.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    with ThreadPoolExecutor&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;max_workers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; as executor:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;future&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; executor.submit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;long_running_task&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 작업을 쓰레드 풀에 제출&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# 완료될 때까지 기다리며 결과 확인&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; not future.done&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;필요한 로그출력&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            time.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0.5&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 0.5초마다 상태 체크&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; future.result&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 결과 얻기&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;result&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;context switching처럼 비용이 계속 발생하는데 왜 이런 짓을 하는가?
+예를들어 필요한 로그를 출력한다던가 어떠한 count를 +1 한다던가
+결과 값을 전달 받은 시점에서 잠깐 다른 작업을 할 수 있음&lt;/p&gt;
+&lt;p&gt;비동기/블로킹 I/O Model&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/17.png&#34;
+	width=&#34;541&#34;
+	height=&#34;340&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/17_hu5035797147133802235.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/17_hu6696810888953238231.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;비동기/논블로킹 I/O Model&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/18.png&#34;
+	width=&#34;481&#34;
+	height=&#34;340&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/18_hu1502702306386384727.png 480w, https://expiator8.github.io/p/%EB%8F%99%EA%B8%B0%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0/18_hu6019760540222961079.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34; &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;339px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;결론&#34;&gt;결론
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;from concurrent.futures import ThreadPoolExecutor
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def long_running_task&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    time.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;3&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Task is completed.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    with ThreadPoolExecutor&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;max_workers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; as executor:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;future&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; executor.submit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;long_running_task&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 비동기/논블로킹
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; not future.done&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;: 동기
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;필요한 로그출력&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            time.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0.5&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nv&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; future.result&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; 동기/블로킹
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;result&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 필요한 로그출력&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 필요한 로그출력&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 필요한 로그출력&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 필요한 로그출력&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 필요한 로그출력&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 필요한 로그출력&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Task is completed.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import asyncio
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;from datetime import datetime
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;from random import randint
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;async def run_job&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; -&amp;gt; None:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;delay&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; randint&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;5, 15&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s1&#34;&gt;&amp;#39;{datetime.now()} sleep for {delay} seconds&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    await asyncio.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;delay&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 5~15초 동안 잠자기&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s1&#34;&gt;&amp;#39;{datetime.now()} finished ({delay} sec)&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;async def main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; -&amp;gt; None:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; True:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        asyncio.create_task&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;run_job&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        await asyncio.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;10&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;asyncio.run&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;main&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:00:32.209662 sleep for 5 seconds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:00:37.210256 finished (5 sec)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:00:42.210417 sleep for 13 seconds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:00:52.211457 sleep for 15 seconds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:00:55.211784 finished (13 sec)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:01:02.213019 sleep for 9 seconds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:01:07.212445 finished (15 sec)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2024-11-15 09:01:11.214358 finished (9 sec)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;await의 역할&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;뒤에 나오는 코루틴(Awaitable 객체)를 Eventloop에 등록&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;코루틴이 끝날 때 결과값을 전달받기를 기다리며 제어권을 Eventloop로 반환&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;await나 return을 하지 않는 이상 Eventloop로 제어권을 반환하고 다른 코루틴을 실행할 방법이 없기 때문에&lt;br&gt;
+requests등의 블로킹 코드를 코루틴 내부에서 실행하는데 주의가 필요하다는 것.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;async/await를 했을때&lt;br&gt;
+await를 하면 이벤트 루프가 돌지 않는가? 이벤트 루프가 돈다. 그러면 비동기라고 할 수 있지 않나?&lt;br&gt;
+함수 내부에서만 보면 동기/블로킹으로 작동하고 있을 것이다.&lt;br&gt;
+왜냐? await가 끝나기 전까지는 그 밑의 작업을 실행할 수 없다.&lt;br&gt;
+하지만 코드 전체를 보면 비동기적으로 작동하는 로직들이 많을 것이다.&lt;/p&gt;
+&lt;p&gt;이 코드는 동기다! 비동기에 논블로킹이다! 라고 하기가 힘들다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;∴블로킹/논블로킹, 동기/비동기는 일정한 영역에 한정적으로 봤을때는 추정할 수 있지만
+코드 전체적으로 봤을때는 한가지로 단정지을수 없다.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Block/Non-block: 제어권. 제어할 수 없는 대상을 어떻게 처리하는가. 제어권을 누가 가지고 언제 반환하는가.&lt;br&gt;
+Synchronous/Asynchronous: 시간. 제어권을 반환하는 시간, 결과값을 전달하는 시간이 일치하는가&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

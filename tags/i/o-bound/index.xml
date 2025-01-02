@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>I/O Bound on Markdown 파일 정리하기</title>
+        <link>https://expiator8.github.io/tags/i/o-bound/</link>
+        <description>Recent content in I/O Bound on Markdown 파일 정리하기</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 11 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://expiator8.github.io/tags/i/o-bound/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>스레드, 프로세스, 동시성과 병렬성</title>
+        <link>https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/</link>
+        <pubDate>Wed, 11 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/</guid>
+        <description>&lt;h2 id=&#34;cpu&#34;&gt;CPU
+&lt;/h2&gt;&lt;p&gt;CPU (Central Processing Unit) 는 기계의 일종의 두뇌&lt;br&gt;
+운영 체제와 다른 프로그램 또는 애플리케이션의 명령을 처리하는 역할&lt;br&gt;
+각 명령은 명령 주기(instruction cycle, fetch-execute 주기라고도 함)에 따라 실행&lt;/p&gt;
+&lt;p&gt;instruction cycle&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Fetch&lt;/li&gt;
+&lt;li&gt;Decode&lt;/li&gt;
+&lt;li&gt;Execute&lt;/li&gt;
+&lt;li&gt;Memory Access&lt;/li&gt;
+&lt;li&gt;Registry Write-Back&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;CPU는 사용 가능한 코어들 사이에서 처리 명령을 나누고 조정&lt;br&gt;
+CPU 코어: 개별 처리 장치. 프로그램과 다른 작업을 실행하는 역할&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/14.png&#34;
+	width=&#34;3088&#34;
+	height=&#34;2106&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/14_hu13174014147580122955.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/14_hu17783990201858135540.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CPU 구성요소&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;351px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;process와-thread&#34;&gt;Process와 Thread
+&lt;/h2&gt;&lt;h3 id=&#34;process&#34;&gt;Process
+&lt;/h3&gt;&lt;p&gt;프로그램&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;컴퓨터에게 주어지는 어떠한 문제 처리 방법을 기술한 일련의 명령문을 포함하는 실행 파일&lt;/li&gt;
+&lt;li&gt;이는 애플리케이션 프로그램 또는 시스템 프로그램일 수 있음.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;애플리케이션 프로그램: 워드 프로세서, 게임, 구글 크롬 등&lt;br&gt;
+시스템 프로그램: 컴파일러, 파일 관리 프로그램 등&lt;/p&gt;
+&lt;p&gt;이러한 코드는 디스크에 저장되고 컴파일되어 메모리(RAM)에서 로드되어 프로세서(CPU)에 의해 실행&lt;/p&gt;
+&lt;p&gt;프로세서는 실행 중인 프로그램이며, 실행 중인 컴퓨터 프로그램의 인스턴스. 최소 1개의 메인 스레드를 보유&lt;/p&gt;
+&lt;h3 id=&#34;thread&#34;&gt;Thread
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;쓰레드는 프로세스 내의 기본 실행 단위&lt;/li&gt;
+&lt;li&gt;동일한 프로세스 내의 다른 독립적인 실행 흐름과 동일한 주소 공간을 공유하는 독립적인 실행 흐름&lt;/li&gt;
+&lt;li&gt;프로세스는 하나 이상의 스레드를 가질 수 있음. 예시: Python 프로세스의 기본 스레드인 메인 스레드&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/4.png&#34;
+	width=&#34;1717&#34;
+	height=&#34;736&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/4_hu2229550747616705223.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/4_hu9175790153150505170.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;프로세스와 스레드&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;559px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;process-vs-thread&#34;&gt;Process vs Thread
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;구분&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;프로세스 (Process)&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;스레드 (Thread)&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;정의&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;운영체제에서 할당받는 자원의 단위 (실행 중인 프로그램)&lt;/td&gt;
+          &lt;td&gt;프로세스 내에서 실행되는 작업의 단위&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;메모리 공간&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;서로 다른 프로세스는 독립적인 메모리 공간을 가짐&lt;/td&gt;
+          &lt;td&gt;프로세스 내에서 메모리를 공유 (Code, Data, Heap 공유)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;독립성&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Code, Data, Stack, Heap이 독립적&lt;/td&gt;
+          &lt;td&gt;Stack만 독립적으로 할당, 나머지는 공유&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;자원 공유&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;다른 프로세스와 자원 공유 불가 (IPC를 통해 제한적으로 가능)&lt;/td&gt;
+          &lt;td&gt;같은 프로세스 내의 스레드끼리는 자원을 쉽게 공유 가능&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;상호작용&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;한 프로세스는 다른 프로세스의 메모리에 직접 접근할 수 없음&lt;/td&gt;
+          &lt;td&gt;같은 프로세스의 스레드끼리는 서로 영향을 끼칠 수 있음&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;오버헤드&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;프로세스 생성/종료 시 오버헤드가 큼&lt;/td&gt;
+          &lt;td&gt;스레드 생성/종료 시 오버헤드가 상대적으로 적음&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;예외 처리&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;한 프로세스의 오류는 다른 프로세스에 영향을 미치지 않음&lt;/td&gt;
+          &lt;td&gt;한 스레드의 오류가 프로세스 전체에 영향을 줄 수 있음&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;속도&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;문맥 전환(Context Switching)이 느림&lt;/td&gt;
+          &lt;td&gt;문맥 전환이 빠름&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;예시&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;웹 브라우저, 운영체제의 각 서비스&lt;/td&gt;
+          &lt;td&gt;웹 브라우저의 탭, 파일 읽기 쓰기 스레드&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/6.png&#34;
+	width=&#34;3097&#34;
+	height=&#34;1199&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/6_hu13560233597113359171.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/6_hu17470338604918111281.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;프로세스와 스레드&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;258&#34;
+		data-flex-basis=&#34;619px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;IPC(inter process communication)의 종류로는 공유메모리, 파일, 소켓, 파이프, 메세지 큐가 있음. Thread Context Switching보다 Cost 높음&lt;/p&gt;
+&lt;p&gt;예를 들어 브라우저를 띄워서 네이버 서버와 HTTP 통신해서 html 등의 파일을 가져오는 것도 IPC라고 볼 수 있음&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;브라우저라는 프로그램을 실행. 메모리에 올라가면 프로세스가 됨.&lt;/li&gt;
+&lt;li&gt;주소창에 네이버 입력하게 되면 네이버라는 서버에다가 요청하는 것. -&amp;gt; 네이버 서버에서 어떤 프로세스를 띄워서 구동되는 것&lt;/li&gt;
+&lt;li&gt;즉 IPC다 라고 볼 수 있음. 프로세스와 프로세스가 정보를 요청하고 응답 받는 것이기 때문.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;예시&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/2.png&#34;
+	width=&#34;1638&#34;
+	height=&#34;808&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/2_hu14692877343431898823.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/2_hu16128777843432540992.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;브라우저 멀티프로세스 구조&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;486px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;브라우저는 멀티프로세스/멀티스레드를 기반으로 멀티프로세싱, 멀티스레딩을 함.&lt;/p&gt;
+&lt;p&gt;Browser Process: 주소창 등을 관리하는 프로세스&lt;br&gt;
+GPU Process: GPU 관련된 것들을 관리하는 프로세스&lt;br&gt;
+Plugin Process: 확장 프로그램 등 플러그인을 관리하는 프로세스&lt;br&gt;
+Renderer Process: 보이는 화면을 관리하는 프로세스&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/3.png&#34;
+	width=&#34;1652&#34;
+	height=&#34;870&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/3_hu11758552725430928705.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/3_hu11637137413348727421.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;브라우저 멀티스레드 구조&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;
+Renderer Process&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Main thread&lt;/li&gt;
+&lt;li&gt;Worker threads&lt;/li&gt;
+&lt;li&gt;Compositor thread&lt;/li&gt;
+&lt;li&gt;Raster thread&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/5.png&#34;
+	width=&#34;1401&#34;
+	height=&#34;560&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/5_hu15966066849112634274.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/5_hu3906798984780962326.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;btop 리소스 모니터 - https://github.com/aristocratos/btop&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;여러개의 스레드 또는 프로세스를 만든 상태를 멀티스레드, 멀티프로세스. 이를 기반으로 작업을 하는 것을 멀티스레딩, 멀티프로세싱이라고 함.&lt;/p&gt;
+&lt;h2 id=&#34;multiprocessing과-multithreading&#34;&gt;Multiprocessing과 Multithreading
+&lt;/h2&gt;&lt;h3 id=&#34;multiprocessing&#34;&gt;Multiprocessing
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;여러 개의 프로세스, 즉 멀티프로세스를 통해 동시에 두 가지 이상의 일을 수행할 수 있는 것&lt;/li&gt;
+&lt;li&gt;특정 프로세스 중 일부에 문제가 발생하더라도 다른 프로세스에 영향을 미치지 않음&lt;br&gt;
+예시: kill -9 [PID] 명령을 한다고 종료한 프로세스와 관련 없는 다른 프로세스에 문제가 발생하지는 않음&lt;/li&gt;
+&lt;li&gt;멀티프로세싱을 사용하여 여러 작업을 병렬로 실행하려면 컴퓨터에 최소 두 개의 CPU 코어가 있어야 함&lt;br&gt;
+CPU 코어: 명령을 실행할 수 있는 CPU 내의 단일 처리 장치. 즉, CPU에 코어가 많을수록 병렬로 처리할 수 있는 작업이 많아짐&lt;/li&gt;
+&lt;li&gt;그러나 동시 멀티스레딩(Simultaneous Multithreading, SMT) 또는 하이퍼스레딩(Hyper-Threading) 기술은
+하나의 물리적 CPU 코어에 두 개 이상의 논리적 코어를 가질 수 있게 해서 하나의 코어로 여러 작업을 병렬로 실행할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Use case&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;멀티프로세싱이 가장 적합한 작업 유형은 대표적으로 CPU-bound 작업&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CPU burst: 프로세스가 CPU에서 한 번에 연속적으로 실행되는 시간&lt;br&gt;
+CPU-bound 프로세스: CPU burst 작업이 많은 프로세스&lt;/p&gt;
+&lt;p&gt;수학적 계산, 데이터 압축, 코드 컴파일, 머신 러닝 등과 같이 완료 시간이 주로 프로세서(CPU) 속도에 의해 결정되는 작업&lt;/p&gt;
+&lt;p&gt;긴 타원은 완료하는 데 더 많은 시간이 걸리는 CPU-bound 작업&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/8.png&#34;
+	width=&#34;3396&#34;
+	height=&#34;1161&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/8_hu557638970045940930.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/8_hu2147065688244975635.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CPU-bound 작업의 병렬 실행 &#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;292&#34;
+		data-flex-basis=&#34;702px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;CPU bound 작업은 완료하는데 더 많은 시간이 걸리기 때문에 병렬로 실행하면 시간을 절약할 수 있음&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/9.png&#34;
+	width=&#34;3396&#34;
+	height=&#34;789&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/9_hu2550355492966711619.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/9_hu5634462686358384604.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CPU-bound 작업의 순차적 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;430&#34;
+		data-flex-basis=&#34;1033px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;두 작업을 동기적으로 실행하면 모두 완료하기까지 필요한 시간이 더 길어짐&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/10.png&#34;
+	width=&#34;3396&#34;
+	height=&#34;1039&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/10_hu1941368694532810755.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/10_hu3727440634600862012.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CPU-bound 작업의 동시 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;326&#34;
+		data-flex-basis=&#34;784px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;완벽한 병렬성 없이 동시에 실행하더라도 이점이 없음&lt;/p&gt;
+&lt;h3 id=&#34;multithreading&#34;&gt;Multithreading
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;하나의 CPU 코어에서는 여러 프로그램, 스레드가 동시에 실행될 수 있음&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CPU 코어가 2개 이상이라면 동시에, 그리고 병렬로 실행될 수 있음.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;멀티 스레딩은 프로세스 내 작업을 멀티스레드로 처리하는 기법&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;스레드끼리 서로 자원을 공유&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;프로세스보다 가볍기 때문에 효율성이 높은 장점&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;한 스레드에 문제가 생기면 다른 스레드에도 영향을 끼쳐 스레드로 이루어져 있는 프로세스에 영향을 줄 수 있음&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/4.png&#34;
+	width=&#34;1717&#34;
+	height=&#34;736&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/4_hu2229550747616705223.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/4_hu9175790153150505170.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;프로세스와 스레드&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;559px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;아키텍처 예시: 브라우저. 멀티프로세스이자 멀티스레드 아키텍처를 가진 소프트웨어&lt;/p&gt;
+&lt;p&gt;Python GIL(Global Interpreter Lock)&lt;/p&gt;
+&lt;p&gt;여러 코어를 사용할 수 있더라도, Python 프로세스 내의 스레드는 Java, C/C++, Go와 같은 다른 프로그래밍 언어의 스레드와 달리 병렬로 실행할 수 없음&lt;/p&gt;
+&lt;p&gt;하지만 GIL이 해결할 수 없는 제약이 된다고 할 수는 없음&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;병렬 처리는 multiprocessing 모듈, ProcessPollExecutor 클래스, asyncio등의 선택지 다양하게 있음&lt;/li&gt;
+&lt;li&gt;thread 병렬성 처리를 위해 Jython, IronPython, Stackless Python 등이 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Use case&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;멀티스레딩이 가장 적합한 작업 유형은 대표적으로 I/O-bound 작업&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I/O(Input/Output): 파일을 읽고 쓰거나, 네트워크상에서 데이터를 주고받거나, 모니터/ 마우스 같은 입출력 장치와 데이터를 주고 받는 것&lt;br&gt;
+I/O burst: 프로세스가 IO 작업을 요청하고, 그 결과를 기다리는 시간&lt;br&gt;
+I/O-bound 프로세스: IO burst 작업이 많은 프로세스&lt;/p&gt;
+&lt;p&gt;스레드가 데이터베이스에 데이터 요청 명령을 실행하는 경우&lt;br&gt;
+스레드가 응답을 기다리는 동안 CPU 코어를 차단하는 것은 의미가 없음&lt;br&gt;
+-&amp;gt; 첫 번째 스레드가 기다리는 동안 다른 스레드가 코어를 사용할 수 있도록 하는 것이 리소스를 더 효율적으로 사용하는 것&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/11.png&#34;
+	width=&#34;2946&#34;
+	height=&#34;1161&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/11_hu14055750380524052274.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/11_hu2631806631162421970.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;I/O-bound 작업의 동시 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;253&#34;
+		data-flex-basis=&#34;608px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;빈 원은 스레드가 무언가가 발생하기를 기다리는 I/O 작업
+첫 번째 I/O 작업이 시작되면(빈 녹색 원) 운영 체제는 계산 리소스를 더 잘 할당하기 위해 대기 스레드를 빨간색 스레드로 빠르게 전환
+이는 OS 가 내리는 결정이며 개발자는 스레드 간에 언제 전환할지 결정할 수 없음&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/12.png&#34;
+	width=&#34;2946&#34;
+	height=&#34;789&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/12_hu11297398547581168706.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/12_hu14164562707188950831.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;I/O-bound 작업의 순차적 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;373&#34;
+		data-flex-basis=&#34;896px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;두 작업을 동기적으로 실행하면 모두 완료하기까지 필요한 시간이 더 길어짐
+따라서 I/O 작업을 처리할 때 멀티스레딩을 사용하면 리소스를 보다 효율적으로 할당할 수 있음&lt;/p&gt;
+&lt;h2 id=&#34;코루틴coroutine&#34;&gt;코루틴(Coroutine)
+&lt;/h2&gt;&lt;p&gt;루틴&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;일련의 명령(코드의 흐름)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;메인 루틴&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프로그램의 메인 코드의 흐름&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;서브 루틴&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;우리가 알고 있는 보통의 함수나 메소드 (메인 루틴을 보조하는 역할)&lt;/li&gt;
+&lt;li&gt;하나의 진입점과 하나의 탈출점이 있는 루틴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;코루틴&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;서브 루틴의 일반화된 형태&lt;/li&gt;
+&lt;li&gt;다양한 진입점과 다양한 탈출점이 있는 루틴&lt;/li&gt;
+&lt;li&gt;코루틴은 서브루틴과는 달리 해당 로직들이 진행되는 중간에 멈추어서 특정 위치로 돌아 갔다가 다시 코루틴에서 진행되었던 위치로 돌아와 나머지 로직을 수행할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예시 스크립트&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;name, mealtime&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s2&#34;&gt;&amp;#34;{name}에게 배달 완료!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    time.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;mealtime&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s2&#34;&gt;&amp;#34;{name} 식사 완료, {mealtime}시간 소요...&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s2&#34;&gt;&amp;#34;{name} 그릇 수거 완료&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;def main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;A&amp;#34;&lt;/span&gt;, 5&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt;, 3&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, 4&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# return None &amp;lt;- 생략 되어 있음&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; time.time&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; time.time&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;end - start&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;예시 스크립트에선 서브 루틴은 두 가지가 있음. 메인 루틴 안에 main()함수가 있고, main() 서브루틴이 실행 되면서 그 안에 또다른 서브 루틴 delivery()가 실행 됨.&lt;/li&gt;
+&lt;li&gt;서브 루틴은 함수이고 함수는 input 값이 있으면 return 값이 있는 구조. 즉, 하나의 진입점과 하나의 탈출점이 있는 루틴.&lt;/li&gt;
+&lt;li&gt;코루틴은 다양한 진입점과 다양한 탈출점이 있기 때문에 서브 루틴의 일반화된 형태라고 함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import asyncio
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;async def delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;name, mealtime&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s2&#34;&gt;&amp;#34;{name}에게 배달 완료!&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    await asyncio.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;mealtime&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    time.sleep&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;mealtime&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s2&#34;&gt;&amp;#34;{name} 식사 완료, {mealtime}시간 소요...&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;f&lt;span class=&#34;s2&#34;&gt;&amp;#34;{name} 그릇 수거 완료&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;async def main&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    await asyncio.gather&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;A&amp;#34;&lt;/span&gt;, 1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt;, 1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        delivery&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, 1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# return None &amp;lt;- 생략 되어 있음&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; time.time&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    asyncio.run&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;main&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; time.time&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    print&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;end - start&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;A에게 배달 완료!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;B에게 배달 완료!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;C에게 배달 완료!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;A 식사 완료, 1시간 소요...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;A 그릇 수거 완료
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;B 식사 완료, 1시간 소요...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;B 그릇 수거 완료
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;C 식사 완료, 1시간 소요...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;C 그릇 수거 완료
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;-&amp;gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;await asyncio.sleep(mealtime)에서 탈출을 하고
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;다시 await asyncio.sleep(mealtime)로 진입을 하게 됨
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;원래는 async def delivery(name, mealtime):로 진입했었음
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;즉, 진입점 2개, 탈출점이 2개가 있음
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;코루틴은 파이썬만 있는게 아니라 javascript, golang등 다양한 언어에서 지원&lt;/li&gt;
+&lt;li&gt;예시의 delivery()와 같은 함수를 코루틴 함수라고 함. 코루틴 함수로 비동기 코드를 작성할 수 있음&lt;/li&gt;
+&lt;li&gt;따라서, 파이썬 비동기 함수는 코루틴 함수로 작성할 수 있다고 볼 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;간단하게 정리하자면&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;코루틴은 다양한 진입점과 다양한 탈출점이 있는 함수&lt;/li&gt;
+&lt;li&gt;서브루틴은 하나의 진입점과 하나의 탈출점이 있는 일반적인 함수&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;라고 생각할 수 있다.&lt;/p&gt;
+&lt;p&gt;코루틴의 장점&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;쓰레드에 비해 오버헤드 감소. 에시: 쓰레드는 컨텍스트 스위칭 비용 발생이 큼&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;코루틴은 단일(싱글) 스레드에서 스택을 기반으로 동작하는 비동기 작업. 단일 스레드내에서도 동시성 프로그래밍 할 수 있도록 발전&lt;/p&gt;
+&lt;h2 id=&#34;concurrency과-parallelism&#34;&gt;Concurrency과 Parallelism
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/13.png&#34;
+	width=&#34;4169&#34;
+	height=&#34;1913&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/13_hu12171274134025618073.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/13_hu15541461973087781464.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;I/O-bound 작업의 순차적 실행 vs 병렬 &amp;#43; 동시 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/15.png&#34;
+	width=&#34;2946&#34;
+	height=&#34;789&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/15_hu15040346347333492723.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/15_hu14253826417657835942.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;순차적 작업 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;373&#34;
+		data-flex-basis=&#34;896px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;빨간색 작업이 실행을 시작하려면 녹색 작업이 먼저 완료되어야 함. 채워진 각 원은 수행해야 할 명령&lt;/p&gt;
+&lt;h3 id=&#34;concurrency&#34;&gt;Concurrency
+&lt;/h3&gt;&lt;p&gt;동시성은 여러 작업 또는 프로세스의 실행이 시간적으로 겹치는 것&lt;/p&gt;
+&lt;p&gt;시간적으로 겹치지만 둘 다 같은 순간에 실행되지 않을 수도 있음&lt;br&gt;
+-&amp;gt; 반드시 물리적으로 동시에 즉, 병렬로 실행되지 않을 수 있음(작업 스위칭)&lt;/p&gt;
+&lt;h3 id=&#34;parallelism&#34;&gt;Parallelism
+&lt;/h3&gt;&lt;p&gt;병렬성은 여러 작업 또는 프로세스가 물리적으로 동시에 실행되는 것&lt;/p&gt;
+&lt;p&gt;∴ 동시성은 시간적으로 겹치는 작업을 포함하는 더 광범위한 개념&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/16.png&#34;
+	width=&#34;1699&#34;
+	height=&#34;1023&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/16_hu17283264528452195648.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/16_hu9805957252235036327.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;병렬(Parallel) 작업 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;두 작업을 병렬로 실행하면 많은 시간을 절약&lt;/li&gt;
+&lt;li&gt;두 개의 프로세스, 스레드 또는 작업이 병렬로 실행되면 동시에 실행됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/17.png&#34;
+	width=&#34;2946&#34;
+	height=&#34;1023&#34;
+	srcset=&#34;https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/17_hu8867914901714610308.png 480w, https://expiator8.github.io/p/%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1/17_hu15279083045364910593.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;동시(Concurrent) 작업 실행&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;287&#34;
+		data-flex-basis=&#34;691px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;동시성에서 말하는 동시(Concurrent)&lt;br&gt;
+병렬에서 말하는 동시(Simultaneous)&lt;/p&gt;
+&lt;h3 id=&#34;concurrency-and-parallelism-scenarios&#34;&gt;Concurrency and Parallelism Scenarios
+&lt;/h3&gt;&lt;p&gt;기본적으로 여러 작업을 병렬로 실행하려면 최소 두 개의 CPU 코어가 필요&lt;br&gt;
+(동시 멀티스레딩(Simultaneous Multithreading, SMT) 또는 하이퍼스레딩(Hyper-Threading) 기술로 하나의 코어만으로 여러 작업을 병렬로 실행할 수 있지만 지금은 기본적인 내용으로)&lt;/p&gt;
+&lt;p&gt;1 process, 1 thread, 1 core&lt;/p&gt;
+&lt;p&gt;✅ 동시성&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;❌ 멀티스레딩을 통한 동시성은 없음&lt;/li&gt;
+&lt;li&gt;✅ 코루틴을 사용한 동시성&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1 process, n threads, 1 core&lt;br&gt;
+✅ 동시성&lt;br&gt;
+❌ 병렬 처리 없음(예외: 하이퍼 스레딩)&lt;/p&gt;
+&lt;p&gt;1 process, n threads, 2 cores&lt;br&gt;
+✅ 동시성&lt;br&gt;
+✅❌ 병렬 처리 여부는 프로그래밍 언어에 따라 달라짐&lt;br&gt;
+(Python의 각 프로세스 내의 스레드는 Python의 GIL(Global Interpreter Lock)로 인해 실제로 병렬로 실행될 수 없음. Java, C/C++, Go 등 다른 프로그래밍 언어의 스레드와는 다름)&lt;/p&gt;
+&lt;p&gt;2 processes, n threads, 1 core&lt;br&gt;
+✅ 동시성&lt;br&gt;
+❌ 병렬 처리 없음(예외: 하이퍼 스레딩)&lt;/p&gt;
+&lt;p&gt;2 processes, n threads, 2 cores&lt;br&gt;
+✅ 동시성&lt;br&gt;
+✅ 병렬성, 두 프로세스는 병렬로 실행될 수 있음&lt;/p&gt;
+&lt;h3 id=&#34;advantages-and-disadvantages&#34;&gt;Advantages and Disadvantages
+&lt;/h3&gt;&lt;h2 id=&#34;advantages&#34;&gt;Advantages
+&lt;/h2&gt;&lt;p&gt;리소스의 보다 효율적인 할당과 그에 따른 시간 절약
+cost-effective(비용 효율)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;스레드 컨텍스트 스위칭은 프로세스 컨텍스트 스위칭보다 비용 효율적&lt;/li&gt;
+&lt;li&gt;파이버(fibers)와 코루인(Coroutine)과 같이 컨텍스트 전환 비용을 최소화하는 메커니즘도 있음&lt;/li&gt;
+&lt;li&gt;코루틴은 스레드 컨텍스트 스위칭보다 비용 효율적&lt;/li&gt;
+&lt;li&gt;프로세스 컨텍스트 스위칭 cost &amp;gt; 스레드 컨텍스트 스위칭 cost &amp;gt; 코루틴 cost&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;disadvantages&#34;&gt;Disadvantages
+&lt;/h2&gt;&lt;p&gt;복잡성 증가&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;동시성과 병렬성을 다룰 때 새로운 문제가 발생(예시: race conditions)&lt;/li&gt;
+&lt;li&gt;충돌을 피하기 위해 locking(잠금), semaphores(세마포어), optimistic concurrency control(낙관적 동시성 제어), transaction management(트랜잭션 관리)등
+여러 기법을 사용해 공유 리소스를 신중히 관리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
+&lt;/h2&gt;&lt;p&gt;동시 프로그래밍은 고성능 시스템을 개발하는 데 도움이 되는 매우 강력한 도구이지만, 복잡성을 수반하기 때문에 심도 있게 연구해야 하는 주제&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

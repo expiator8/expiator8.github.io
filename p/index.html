@@ -9,14 +9,11 @@
 <link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="">
 <meta property='og:description' content="">
 <meta property='og:url' content='http://localhost:1313/p/'>
-<meta property='og:site_name' content='juhyeong&#39;s blog'>
+<meta property='og:site_name' content='Markdown 파일 정리하기'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' />
 <meta name="twitter:title" content="">
 <meta name="twitter:description" content="">
     <link rel="shortcut icon" href="/favicon.png" />
-
-  
-
 
     </head>
     <body class="
@@ -26,7 +23,7 @@
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
+                localStorage.setItem(colorSchemeKey, "dark");
             }
         })();
     </script><script>
@@ -72,14 +69,14 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">juhyeong&#39;s blog</a></h1>
-            <h2 class="site-description">의지만으로는 부족해! 행동으로 옮겨야 한다아!</h2>
+            <h1 class="site-name"><a href="/">Markdown 파일 정리하기</a></h1>
+            <h2 class="site-description">Markdown 파일 정리하기!</h2>
         </div>
     </header><ol class="menu-social">
             
                 <li>
                     <a 
-                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        href='https://github.com/expiator8'
                         target="_blank"
                         title="GitHub"
                         rel="me"
@@ -250,13 +247,59 @@
      
     
         
+    <script src="https://utteranc.es/client.js" 
+        repo="expiator8/expiator8.github.io"
+        issue-term="url"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
     
 
     <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2024 juhyeong&#39;s blog
+        2024 Markdown 파일 정리하기
     </section>
     
     <section class="powerby">
