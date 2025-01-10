@@ -752,7 +752,6 @@ I/O-bound 프로세스: IO burst 작업이 많은 프로세스</p>
 </span><span class="lnt">39
 </span><span class="lnt">40
 </span><span class="lnt">41
-</span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">import <span class="nb">time</span>
@@ -762,7 +761,6 @@ I/O-bound 프로세스: IO burst 작업이 많은 프로세스</p>
 </span></span><span class="line"><span class="cl">async def delivery<span class="o">(</span>name, mealtime<span class="o">)</span>:
 </span></span><span class="line"><span class="cl">    print<span class="o">(</span>f<span class="s2">&#34;{name}에게 배달 완료!&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">    await asyncio.sleep<span class="o">(</span>mealtime<span class="o">)</span>
-</span></span><span class="line"><span class="cl">    time.sleep<span class="o">(</span>mealtime<span class="o">)</span>
 </span></span><span class="line"><span class="cl">    print<span class="o">(</span>f<span class="s2">&#34;{name} 식사 완료, {mealtime}시간 소요...&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">    print<span class="o">(</span>f<span class="s2">&#34;{name} 그릇 수거 완료&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span>
@@ -1000,6 +998,19 @@ cost-effective(비용 효율)</p>
 
         <div class="article-details">
             <h2 class="article-title">동기와 비동기</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/event-loop/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Event loop</h2>
         </div>
     </a>
 </article>
