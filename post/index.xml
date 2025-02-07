@@ -25,17 +25,17 @@
 </description>
         </item>
         <item>
-        <title>Docker with FastAPI 개발 환경 전략</title>
-        <link>https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/</link>
+        <title>Docker with FastAPI 개발 환경 전략(작성중)</title>
+        <link>https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/</link>
         <pubDate>Thu, 06 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/</guid>
+        <guid>https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/</guid>
         <description>&lt;h2 id=&#34;개요instroduction&#34;&gt;개요(Instroduction)
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;도커 사용 목적 및 계기&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/1.png&#34;
 	width=&#34;250&#34;
 	height=&#34;314&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/1_hu2532719320202224987.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/1_hu11815706059024545085.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/1_hu2532719320202224987.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/1_hu11815706059024545085.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -49,10 +49,10 @@
 개발자 각각 개인의 로컬 환경 또는 개발 환경, 운영 환경을 설정할 때 복잡하고 번거로운 작업을 해야했습니다.&lt;br&gt;
 물론 숙달이 되면 빠르게 작업할 수 있었지만 그렇다고 복잡하고 번거로운 작업이 줄어드는 것은 아니고&lt;br&gt;
 휴먼에러, 예상치 못한 에러가 발생하는 상황도 있었습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/4.png&#34;
 	width=&#34;400&#34;
 	height=&#34;400&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/4_hu3566837716070860221.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/4_hu12116380615520810313.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/4_hu3566837716070860221.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/4_hu12116380615520810313.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -69,10 +69,10 @@
 여러 프로젝트를 개발할 경우에 여러 개의 환경을 어려움 없이 관리하기 위해,&lt;br&gt;
 이렇게 환경의 차이에서 발생하는 문제들을 근본적으로 해결해 업무 프로세스를 보다 효율적으로 만들기 위해.&lt;br&gt;
 컨테이너 플랫폼 도커를 활용해 로컬 환경, 개발 환경 및 운영 환경 등을 보다 손쉽고 일관되게 유지하기 위한 방법을 정리했습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/2.png&#34;
 	width=&#34;1000&#34;
 	height=&#34;470&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/2_hu4288397564597159818.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/2_hu9344094004676912975.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/2_hu4288397564597159818.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/2_hu9344094004676912975.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -97,10 +97,10 @@
 컨테이너 안에서 소스 코드를 개발하면 개발자의 PC에서는 도커 외에는 아무것도 설치하지 않고도 코드를 개발할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;IntelliJ의 원격 개발환경 구성 기능은 정식 라이선스로(유료)만 사용이 가능하기 때문에 VSCode로 진행했습니다.&lt;/p&gt;
 &lt;p&gt;VSCode Extension으로 Docker와 Dev containers를 설치합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/5.png&#34;
 	width=&#34;560&#34;
 	height=&#34;288&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/5_hu15578511638418233772.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/5_hu6239567064231575124.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/5_hu15578511638418233772.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/5_hu6239567064231575124.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -110,10 +110,10 @@
 		data-flex-grow=&#34;194&#34;
 		data-flex-basis=&#34;466px&#34;
 	
-&gt; &lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/6.png&#34;
+&gt; &lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/6.png&#34;
 	width=&#34;560&#34;
 	height=&#34;288&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/6_hu2836736053464386079.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/6_hu12289622755158810208.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/6_hu2836736053464386079.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/6_hu12289622755158810208.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -126,10 +126,10 @@
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;dockerfile&#34;&gt;Dockerfile
 &lt;/h4&gt;&lt;p&gt;Dev Containers 확장팩은 프로젝트 안의 .devcontainer 폴더 내부의, devcontainer.json, Dockerfile, docker-compose.yml 파일 등을 활용합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/7.png&#34;
 	width=&#34;418&#34;
 	height=&#34;224&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/7_hu6347990109844300457.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/7_hu12726871609924523416.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/7_hu6347990109844300457.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/7_hu12726871609924523416.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
@@ -305,10 +305,10 @@ alpine 태그는 시스템 운영에 필수적인 최소한의 패키지를 가�
 &lt;/ul&gt;
 &lt;p&gt;pip install을 할 때에는 &amp;ndash;no-cache-dir 옵션을 통해 다운로드된 패키지의 캐시 파일을 저장하지 않도록 해서
 이미지의 크기를 좀 더 줄일 수 있도록 설치합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/3.png&#34;
 	width=&#34;2088&#34;
 	height=&#34;166&#34;
-	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/3_hu9949503175980559878.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/3_hu5120880265822918119.png 1024w&#34;
+	srcset=&#34;https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/3_hu9949503175980559878.png 480w, https://expiator8.github.io/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5%EC%9E%91%EC%84%B1%EC%A4%91/3_hu5120880265822918119.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34; &#34;
