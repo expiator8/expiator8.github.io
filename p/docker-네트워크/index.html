@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Docker 네트워크">
+<title>Docker 네트워크</title>
+
+<link rel='canonical' href='http://localhost:1313/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Docker 네트워크">
+<meta property='og:description' content="Docker 네트워크">
+<meta property='og:url' content='http://localhost:1313/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/'>
+<meta property='og:site_name' content='Markdown 파일 정리하기'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Docker' /><meta property='article:published_time' content='2025-01-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Docker 네트워크">
+<meta name="twitter:description" content="Docker 네트워크">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7498518043194513332.png" width="300"
+                            height="228" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Markdown 파일 정리하기</a></h1>
+            <h2 class="site-description">Markdown 파일 정리하기!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/expiator8'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#도커-네트워크">도커 네트워크</a>
+      <ol>
+        <li><a href="#가상-네트워크">가상 네트워크</a></li>
+        <li><a href="#가상-인터페이스">가상 인터페이스</a></li>
+        <li><a href="#포트포워딩">포트포워딩</a></li>
+        <li><a href="#도커의-네트워크-드라이버">도커의 네트워크 드라이버</a></li>
+      </ol>
+    </li>
+    <li><a href="#스토리지와-볼륨">스토리지와 볼륨</a>
+      <ol>
+        <li><a href="#컨테이너의-상태">컨테이너의 상태</a></li>
+        <li><a href="#도커-볼륨">도커 볼륨</a></li>
+        <li><a href="#바인드-마운트bind-mount">바인드 마운트(Bind Mount)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/software/" >
+                Software
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">Docker 네트워크</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Docker 네트워크
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 22, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="도커-네트워크">도커 네트워크
+</h2><h3 id="가상-네트워크">가상 네트워크
+</h3><p>컨테이너 가상화: 서버 한대를 여러 컨테이너로 격리
+가상네트워크: 서버 한대 안에서 여러 네트워크 구성</p>
+<p><img src="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/1.png"
+	width="2230"
+	height="884"
+	srcset="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/1_hu7439571027363258556.png 480w, /p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/1_hu18338774529807019821.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="605px"
+	
+></p>
+<p>도커를 설치하고 실행하면 가상의 네트워크인 브릿지 네트워크, 가상의 공유기인 docker0를 만듬<br>
+가상의 공유기 docker0를 도커에서는 브릿지라고 부름<br>
+브릿지는 가상의 IP주소를 할당받음. 일반적으로 172.17.0.1<br>
+도커의 브릿지 네트워크는 컨테이너들에게 IP를 할당해주고 컨테이너들간에 통신할 수 있도록 만듬<br>
+도커에서 컨테이너를 실행하면 도커는 브릿지 네트워크의 IP 주소 범위 안에서 IP 주소를 하나 할당해줌<br>
+마치 공유기에 연결된 기기 한 대에 사설 IP가 할당되는 것과 동일<br>
+컨테이너를 추가 실행하면 각각의 컨테이너들은 같은 대역대에서 겹치지 않는 IP를 할당받음<br>
+같은 브릿지에서 생성된 네트워크는 브릿지를 통해서 서로 통신<br>
+-&gt; 브릿지를 통해 네트워크 패킷을 전달</p>
+<h3 id="가상-인터페이스">가상 인터페이스
+</h3><p><img src="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/2.png"
+	width="2058"
+	height="1142"
+	srcset="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/2_hu18118322723784087719.png 480w, /p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/2_hu15985069471281560811.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="432px"
+	
+></p>
+<p>물리 네트워크 인터페이스에 인터넷 선을 연결하면 기기의 공인 IP나 사설 IP를 할당받음<br>
+이 PC 위에서 도커를 설치하고 실행하면 도커는 가상의 인터페이스 한 개를 생성<br>
+이 가상의 인터페이스는 호스트 OS 위에 만들어짐<br>
+다음으로 컨테이너들을 실행할 때 각각의 컨테이너에 해당하는 가상 인터페이스들이<br>
+Veth라는 접두어로 호스트 OS에 만들어짐. Veth 뒤에는 랜덤한 고유 번호가 할당됨<br>
+가상의 인터페이스로 전달되는 네트워크 신호는 각각의 인터페이스에 해당되는 컨테이너로 전달됨</p>
+<p>물리네트워크에서는 도착지의 IP에 맞게 네트워크를 통해서 기기에 전달하는 것을<br>
+네트워크 장비들이 알아서 해줌</p>
+<p>가상네트워크에서는 별도의 장비가 없기 때문에 소프트웨어적으로 트래픽을 전달해줘야 함<br>
+가상의 인터페이스 간의 네트워크 패킷을 전달하는 규칙은 호스트 OS의 커널 소프트웨어인<br>
+IP Tables에 정의됨. IP Tables: Linux OS의 패킷 필터링 시스템<br>
+예시: Veth1에서 발생한 네트워크 요청이 17217.0.3을 도착지로 하고있고<br>
+iptables의 규칙에 따라서 Veth2로 전될되고 Veth2 인터페이스를 통해서 컨테이너 2로 전달됨<br>
+-&gt; 도커는 컨테이너가 생성되거나 삭제될 때마다 호스트 OS의 iptables 규칙을 업데이트함<br>
+그리고 호스트 OS의 iptables 규칙을 관리하면서 가상 인터페이스들 간의 통신 규칙을 만듬<br>
+그래서 사용자는 별도의 설정을 하지 않아도 같은 브리지 네트워크 생성된 컨테이너들은<br>
+서로 통신을 할 수 있는 상태로 구성됨</p>
+<p>도커는 가상네트워크 내부에서 여러 개의 브릿지 네트워크를 관리할 수 있음<br>
+기본적으로 같은 네트워크 안에 속해 있는 컨테이너들끼리는 통신이 가능<br>
+브릿지 네트워크 단위로 분리하게 되면 특정 컨테이너들끼리는 통신이 되지 않도록 구성할 수도 있음</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker network ls <span class="c1"># 네트워크 리스트 조회</span>
+</span></span><span class="line"><span class="cl">docker network inspect <span class="o">[</span>네트워크명<span class="o">]</span> <span class="c1"># 네트워크 상세 정보 조회</span>
+</span></span><span class="line"><span class="cl">docker network create <span class="o">[</span>네트워크명<span class="o">]</span> <span class="c1"># 네트워크 생성</span>
+</span></span><span class="line"><span class="cl">docker network rm <span class="o">[</span>네트워크명<span class="o">]</span> <span class="c1"># 네트워크 삭제</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="포트포워딩">포트포워딩
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -p <span class="o">[</span>HostOS의포트:컨테이너의포트<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/3.png"
+	width="2016"
+	height="1182"
+	srcset="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/3_hu3785553573625023920.png 480w, /p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/3_hu1361882181886381040.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="170"
+		data-flex-basis="409px"
+	
+></p>
+<p>각각 실행 중인 nginx 컨테이너와 데이터베이스 컨테이너는 바깥쪽에 있는<br>
+192.168.0.20이나 192.168.0.30 서버로 네트워크 신호를 보낼 수 있음<br>
+NAT는 가상 네트워크가 알아서 설정하기 때문에 특별히 지정하지 않아도 내부의 컨테이너는<br>
+이 바깥쪽에 있는 외부망을 통해서 다른 서버로 접근할 수 있음</p>
+<p>외부의 서버에서 컨테이너로 접근할 때는 도커가 실행 중인 192.168.0.10를 통해서 접근해야함<br>
+여기서 포트 포워딩을 사용해 192.168.0.10의 특정 포트로 접근했을때 사용자가 지정한 컨테이너로<br>
+전달하도록 포트 포워딩을 등록해야함<br>
+예시: 172.17.0.2 서버의 타겟 포트를 80으로 지정하고 PC의 IP인 192.168.0.10의 8001번으로<br>
+요청을 보내면 nginx 컨테이너의 80 포트로 요청을 전달<br>
+-&gt; 포트포워딩 기술을 사용하면 컨테이너 간 통신 뿐 아니라 컨테이너가 소속된 호스트 OS의 네트워크에서도<br>
+컨테이너로 접근할 수 있음</p>
+<h3 id="도커의-네트워크-드라이버">도커의 네트워크 드라이버
+</h3><p>도커가 지원하는 네트워크 종류. 대부분 bridge 네트워크를 사용</p>
+<p>브릿지 네트워크(Bridge): 도커 브릿지를 활용해 컨테이너간 통신, NAT 및 포트포워딩 기술을 활용해 외부 통신 지원</p>
+<p>호스트 네트워크(Host): 호스트의 네트워크를 공유, 모든 컨테이너는 호스트 머신과 동일한 IP를 사용, 포트 중복 불가능</p>
+<p>오버레이 네트워크(Overlay): Kubernetes에서 사용, 호스트 머신이 다수일 때 네트워크 관리 기술<br>
+여러 개의 호스트 머신이 있을 때, 이 여러 개의 호스트 머신들을 하나의 네트워크처럼 동작하게 만들어줌</p>
+<p>Macvlan 네트워크: 컨테이너에 MAC 주소를 할당해 물리 네트워크 인터페이스에 직접 연결</p>
+<h2 id="스토리지와-볼륨">스토리지와 볼륨
+</h2><h3 id="컨테이너의-상태">컨테이너의 상태
+</h3><h3 id="도커-볼륨">도커 볼륨
+</h3><p>컨테이너는 stateless하기 때문에 컨테이너가 삭제되거나 재시작되면 모든 데이터가 이미지의 상태로 초기화됨<br>
+그런데 서버를 운영하다 보면 데이터를 유지해야 하는 경우가 있음(e.g. 데이터베이스)<br>
+유지한다는 것은 IT환경에서 영속성(Persistence)이 있다고 표현함</p>
+<p><img src="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/4.png"
+	width="1982"
+	height="796"
+	srcset="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/4_hu22260922194583033.png 480w, /p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/4_hu13462634108300716723.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="597px"
+	
+>
+일반적으로 컨테이너를 운영하는 환경에서는 같은 역할을 하는 서버가 여러개로 운영됨(서버가 이중화 되어있음)<br>
+이때, 영속성이 필요한 데이터는 같은 종류의 모든 컨테이너가 함께 공유하고 있어야 함<br>
+예시: 로드밸런싱으로 3개의 db 컨테이너 1, 2, 3으로 트래픽을 분배할 때,<br>
+컨테이너 1에선 가격이 10000원, 컨테이너 3에서는 가격이 20000원으로 나오면 안됨</p>
+<p>도커는 영속성이 필요한 데이터를 위해서 Docker 볼륨이라는 기능을 제공<br>
+컨테이너 자체는 상태를 가지지 않지만 상태가 필요한 데이터는 외부 공유 저장소에 저장해 두는 것<br>
+컨테이너의 특정 폴더를 공유용 폴더로 만들 수 있음 -&gt; 컨테이너의 폴더를 볼륨에 마운트 한다고 표현<br>
+마운트: 컴퓨터의 특정 디렉토리를 외부 저장소로 대체한다는 것을 의미</p>
+<p><img src="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/5.png"
+	width="1522"
+	height="606"
+	srcset="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/5_hu117588011475716030.png 480w, /p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/5_hu7166315635907169195.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="251"
+		data-flex-basis="602px"
+	
+>
+USB를 PC에 연결하면 새로운 드라이브가 만들어짐<br>
+이 USB를 사용해서 데이터를 저장해 둘 수도 있고 다른 PC와 데이터를 공유할 수도 있음<br>
+이 USB와 동일한 역할을 하는 것이 네트워크 파일 시스템(NFS)<br>
+NFS를 사용하면 네트워크에만 연결되어 있으면 USB와 동일하게 데이터를 외부에 저장할 수 있음<br>
+한 번에 한 대만 연결 가능한 USB와는 다르게 네트워크 파일 시스템에는 동시에 많은 PC를 연결할 수 있음<br>
+NFS는 PC의 특정 폴더를 이 NFS에 마운트 시킬 수 있음. 스토리지의 종류에 따라서 마운트 되는 단위가 달라짐<br>
+연결할 때마다 새로운 드라이브가 추가되는 것처럼 드라이브 단위로 마운트가 될 수도 있고,<br>
+특정한 디렉토리만 마운트 시킬 수도 있음<br>
+-&gt; 도커 볼륨은 USB처럼 데이터를 외부에 보관하는 기능을 제공<br>
+컨테이너들은 이 도커 볼륨을 컨테이너의 특정 경로에 마운트해서 사용<br>
+예시: postgresql 데이터베이스 컨테이너를 실행하면 컨테이너 안에 /var/lib/postgresql/data라는 폴더에<br>
+실제 데이터가 저장되는데 이 경로를 도커의 볼륨에 마운트하면 컨테이너가 실행된 다음에 이 경로에 저장하는 파일들은<br>
+컨테이너 레이어에 저장되는 것이 아니라 마운트되어 있는 외부 볼륨에 저장되어 있는 것<br>
+그리고 볼륨은 1개이고 컨테이너는 3개인데 1개의 볼륨을 3개의 컨테이너가 모두 동일한 경로에 마운트했기 때문에<br>
+모든 컨테이너는 동일한 데이터를 제공할 수 있음</p>
+<p><img src="/6.png%3e"
+	
+	
+	
+	loading="lazy"
+	
+		alt=" "
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -v <span class="o">[</span>볼륨명<span class="o">]</span>:<span class="o">[</span>컨테이너내부경로<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 도커의 볼륨을 컨테이너의 디렉터리로 마운트할 수 있음</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 여기서 도커 볼륨 하나를 한 개의 USB와 동일한 개념으로 이해하면 됨  </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 예시: docker run -v volume1:/var/lib/postgresql/data 라고 하면</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 컨테이너가 실행된 다음 이 컨테이너가 data 폴더에 저장하는 내용들을 마운트 되어 있는</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># volume1이라는 외부 공간에 저장함</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 이 볼륨과 연결된 컨테이너가 변경되거나 문제가 발생해서 종료되고 새로운 컨테이너로 실행되었을 때</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 컨테이너의 읽기/쓰기 레이어는 모두 삭제가 되지만 볼륨은 도커가 별도로 관리하기 때문에 그대로 남아있음</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 이 볼륨을 업그레이드되거나 재생성된 컨테이너가 다시 동일한 경로에 마운트하면</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 이전 볼륨에 만들어져 있던 데이터를 그대로 유지할 수 있음</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/7.png"
+	width="1646"
+	height="748"
+	srcset="/p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/7_hu13713997569477451925.png 480w, /p/docker-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/7_hu3792816140896462951.png 1024w"
+	loading="lazy"
+	
+		alt=" "
+	
+	
+		class="gallery-image" 
+		data-flex-grow="220"
+		data-flex-basis="528px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -v volume1:/etc/postgresql -v volume2:/var/lib/postgresql/data
+</span></span><span class="line"><span class="cl"><span class="c1"># 그리고 하나의 컨테이너에는 여러 개의 볼륨을 마운트 할 수 있음</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 하나의 컴퓨터에 여러 개의 USB를 꽂을 수 있는 것과 같음</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 예를 들어 PostgreSQL이 가지는 설정 파일도 외부 볼륨으로 관리할 수도 있을 것</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 그러면 볼륨1은 etc/postgresql로 마운트, 볼륨2는 /var/lib/postgresql/data로 마운트할 수 있을 것임</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 데이터베이스 설정과 관련된 파일들은 볼륨1에서 관리하게 될 것이고 실제 데이터와 관련된 파일들은 볼륨2에 저장되고 관리하게 됨</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/8.png%3e"
+	
+	
+	
+	loading="lazy"
+	
+		alt=" "
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -v volume1:/var/lib/postgresql/data --name postgresql1
+</span></span><span class="line"><span class="cl">docker run -v volume1:/var/lib/postgresql/data --name postgresql2
+</span></span><span class="line"><span class="cl"><span class="c1"># 또한 도커 볼륨은 여러 개의 컨테이너가 공유할 수 있음</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># DB의 컨테이너를 여러 대 실행시킨 상태에서 하나의 볼륨을 이 각각의 컨테이너들의 데이터를 저장하는</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 같은 경로로 마운트시키면 이 컨테이너들은 어떤 컨테이너로 요청을 보내도 동일한 데이터를 제공</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="바인드-마운트bind-mount">바인드 마운트(Bind Mount)
+</h3><p>볼륨을 마운트할때 실제 데이터를 호스트 OS의 데이터가 저장되는 경로는 volumes인데<br>
+예시<br>
+/volumes/volume1<br>
+/volumes/volume2<br>
+도커가 경로를 자동으로 관리하고 도커가 실행되는 가상 머신 안에서 저장되기 때문에<br>
+이 볼륨이 저장되는 경로에 사용자가 직접 접근하기는 어려움<br>
+HostOS에서 데이터를 직접 다루고 싶을 경우 바인드 마운트기능을 사용하면 됨<br>
+Bind Mount 기능을 사용하면 호스트 OS의 경로를 직접 지정할 수 있음</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># -v [마운트할 HOST OS의 경로]:[컨테이너의 내부 경로]</span>
+</span></span><span class="line"><span class="cl">-v /Users/leejuhyeong/documents/data/mypostgres:/var/lib/postgresql/data
+</span></span><span class="line"><span class="cl"><span class="c1"># :의 왼쪽에 볼륨 이름이 아니라 Host OS의 디렉터리 경로를 지정하면 Bind Mount를 사용할 수 있음</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 실제 Host OS의 /Users/leejuhyeong/documents/data/mypostgres 경로에</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 컨테이너의 데이터 경로가 마운트 되어 Host OS에서 볼륨의 데이터에 더 쉽게 접근할 수 있음</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 바인드 마운트 기능을 사용하면 볼륨이 별도로 만들어지지 않는데 볼륨을 통해서 관리하는 것이</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 좀 더 일반적이기 때문에 직접 디렉터리 내용을 봐야하는 디버깅 같은 상황 등에서 유용하게 활용할 수 있음</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker volume ls <span class="o">[</span>볼륨명<span class="o">]</span> <span class="c1"># 볼륨 리스트 조회</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker volume inspect <span class="o">[</span>볼륨명<span class="o">]</span> <span class="c1"># 볼륨 상세 정보 조회</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker volume crete <span class="o">[</span>볼륨명<span class="o">]</span> <span class="c1"># 볼륨 생성</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker volume rm <span class="o">[</span>볼륨명<span class="o">]</span> <span class="c1"># 볼륨 삭제</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">Docker</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/docker-with-fastapi-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A0%84%EB%9E%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker with FastAPI 개발 환경 전략</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/docker-%EC%A0%84%EB%9E%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker 전략</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/docker-%EC%A0%95%EB%A6%AC/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker 정리</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="expiator8/expiator8.github.io"
+        issue-term="url"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Markdown 파일 정리하기
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

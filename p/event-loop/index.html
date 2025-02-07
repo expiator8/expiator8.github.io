@@ -266,7 +266,7 @@
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -349,9 +349,9 @@ Callback Queue : 비동기적 작업이 완료되면 실행되는 함수들이 �
 		data-flex-basis="440px"
 	
 ></p>
-<p>Task Queue : setTimeout, setInterval, fetch, addEventListener와 같이 비동기로 처리되는 함수들의 콜백 함수가 들어가는 큐 (macrotask queue 혹은 task queue)
-Microtask Queue : promise.then, process.nextTick, MutationObserver 와 같이 우선적으로 비동기로 처리되는 함수들의 콜백 함수가 들어가는 큐 (처리 우선순위가 높음)
-Animation Frames Queue: 브라우저 애니메이션 작업에 대한 처리를 담당</p>
+<p>Task Queue : setTimeout, setInterval, fetch, addEventListener와 같이 비동기로 처리되는 함수들의 콜백 함수가 들어가는 큐 (macrotask queue 혹은 task queue)</p>
+<p>Microtask Queue : promise.then, process.nextTick, MutationObserver 와 같이 우선적으로 비동기로 처리되는 함수들의 콜백 함수가 들어가는 큐 (처리 우선순위가 높음)</p>
+<p>Animation Frames Queue: 브라우저 애니메이션 작업에 대한 처리를 담당</p>
 <p><img src="/p/event-loop/2.gif"
 	width="880"
 	height="495"
@@ -405,98 +405,19 @@ Event Queue : 비동기 I/O 작업 결과를 저장하고 처리하기 위한 �
 	
 ></p>
 <p>asyncio 내장 라이브러리로(coroutine과 event loop) 비동기 프로그래밍을 지원</p>
-<p>파이썬 이벤트 루프 동작 예시 코드</p>
+<p>파이썬에서는 ThreadPoolExecutor, ProcessPoolExecutor을 활용해 이벤트 루프 동작을<br>
+멀티스레딩, 멀티프로세싱 할 수 있는데</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_data</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Start fetching data...&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Data fetched!&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Sample Data&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Start processing data...&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Data processed: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;Processed </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Starting main coroutine...&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1"># Task 생성 및 예약</span>
-</span></span><span class="line"><span class="cl">    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">fetch_data</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Task created and scheduled.&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1"># Task 실행을 대기</span>
-</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">task</span>  <span class="c1"># fetch_data coroutine의 결과를 기다림</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Task completed.&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1"># 결과를 이용하여 다음 coroutine 실행</span>
-</span></span><span class="line"><span class="cl">    <span class="n">processed_data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Final result: </span><span class="si">{</span><span class="n">processed_data</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 이벤트 루프 실행</span>
-</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Starting main coroutine...
-</span></span><span class="line"><span class="cl">Task created and scheduled.
-</span></span><span class="line"><span class="cl">Start fetching data...
-</span></span><span class="line"><span class="cl">Data fetched!
-</span></span><span class="line"><span class="cl">Task completed.
-</span></span><span class="line"><span class="cl">Start processing data...
-</span></span><span class="line"><span class="cl">Data processed: Sample Data
-</span></span><span class="line"><span class="cl">Final result: Processed Sample Data
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">ProcessPoolExecutor</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><p>이때, Node.js의 이벤트 루프 멀티스레딩 구조와 유사하다고 할 수도 있으나 파이썬의 경우 멀티스레딩을 해도<br>
+GIL에 의해 병목 현상이 있을 수 있음</p>
+
 </section>
 
 
